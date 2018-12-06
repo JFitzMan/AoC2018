@@ -2,6 +2,7 @@
 function reader(err, data) {
     if (err) throw err;
     nums = data.split("\n").map(x => parseInt(x))
+    // One liner with reduce via TJ
     //nums = data.split("\n").map(x => parseInt(x)).reduce((first, next) => first+next, 0)
     let freq = 0
     let i
@@ -21,6 +22,7 @@ fs.readFile('day1/input.txt', 'utf8', reader )
 
 
 // pt 2
+// Set is a JS object like an array, but can't contain duplicates, it would perform better here
 function readerpt2(err, data) {
     if (err) throw err;
     nums = data.split("\n").map(x => parseInt(x))
