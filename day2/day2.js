@@ -20,4 +20,24 @@ let threeCts = 0
 
 strings.forEach(counts)
 
-console.log(twoCts*threeCts)
+console.log('Part 1 answer:\t' + (twoCts*threeCts))
+
+
+// pt 2
+
+// all strings are same length
+let len = strings[100].length
+let i = 0
+for (i=0; i < len; i++){
+    // eliminate letter from index i from all strings
+    let temp = strings.map(x => x.slice(0, i).concat(x.slice(i+1)))
+    // check for duplicates in temp
+    counts = []
+    let j = 0
+    for (j=0; j < temp.length; j++){
+        counts[temp[j]] = !(temp[j] in counts) ? 1 :console.log('Part 2 answer: ' +temp[j])
+    }
+}
+
+
+
