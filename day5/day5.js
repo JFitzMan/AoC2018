@@ -27,3 +27,5 @@ while (change){
     }
 }
 console.log(polymer.length)
+
+console.log('Jordan Jordan jordan'.replace(/[Jj]/g, ""))
