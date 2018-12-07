@@ -35,7 +35,7 @@ for (i=0; i < len; i++){
     counts = []
     let j = 0
     for (j=0; j < temp.length; j++){
-        counts[temp[j]] = !(temp[j] in counts) ? 1 :console.log('Part 2 answer: ' +temp[j])
+        counts[temp[j]] = !(temp[j] in counts) ? 1 : console.log('Part 2 answer: ' +temp[j])
     }
 }
 
