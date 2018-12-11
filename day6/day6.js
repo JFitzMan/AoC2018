@@ -35,8 +35,6 @@ for (row = 0; row <= maxX; row++) {
       if (distance < minDistance && distance > 0) {
         minDistance = distance
         closestPointIndex = i
-        savedx = row
-        savedy = col
       } else if (distance === 0) {
         closestPointIndex = i
         minDistance = distance
@@ -95,8 +93,6 @@ for (row = -100; row <= maxX + 100; row++) {
     }
   }
 }
-
-
 
 let maxArea = 0
 let i = 0
