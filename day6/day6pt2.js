@@ -16,8 +16,6 @@ points = pointsStrings.map((x) => {
 
 let col = 0
 let row = 0
-let minDistance = 1000000000
-let closestPointIndex = -1
 let distance = 0
 let x = 0
 let y = 0
@@ -25,7 +23,6 @@ let total = 0
 for (row = 0; row <= maxX; row++) {
   for (col = 0; col <= maxY; col++) {
     // loops over each point to check distance
-    closestPointIndex = -1
     distance = 0
 
     let i = 0
