@@ -1,8 +1,6 @@
 let fs = require('fs')
 let instructions = fs.readFileSync('day7/input.txt', 'utf8').split('\n').map(x => x.trim('/r'))
 
-console.log(instructions)
-
 let steps = {}
 /*
 steps{
