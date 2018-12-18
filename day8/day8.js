@@ -6,7 +6,6 @@ for (i = 0; i < nodes.length; i++) {
   nodes[i] = parseInt(nodes[i])
 }
 
-
 function parseNodes (headerIndex, nodes) {
   // console.log("Header Index: "+ headerIndex)
   let numChild = nodes[headerIndex]
@@ -27,6 +26,39 @@ function parseNodes (headerIndex, nodes) {
   // console.log(metaSum)
 }
 
+function parseNodes2 (headerIndex, nodes) {
+  // console.log("Header Index: "+ headerIndex)
+  let numChild = nodes[headerIndex]
+  let numMeta = nodes[headerIndex + 1]
+  let metaIndex = headerIndex + 2
+  let childNodeVals = []
+  let nodeSum = 0
+
+  let curNumChild = numChild
+  while (curNumChild > 0) {
+    //console.log('Children numer: ' + curNumChild)
+    childNodeVals.push(parseNodes2(metaIndex, nodes))
+    //console.log('nodes looks like: ' + nodes)
+    curNumChild = curNumChild - 1
+  }
+  //console.log('childNodeVals: '+ childNodeVals)
+  if (numChild === 0) {
+    let i = 0
+    for (i = 0; i < numMeta; i++) {
+      nodeSum += nodes[metaIndex + i]
+    }
+  } else {
+    let i = 0
+    for (i = 0; i < numMeta; i++) {
+      if (nodes[metaIndex + i]-1 < childNodeVals.length) {
+        nodeSum += childNodeVals[nodes[metaIndex + i]-1]
+      }
+    }
+  }
+  nodes.splice(headerIndex, numMeta + 2)
+  //console.log('nodeSum: ' + nodeSum)
+  return nodeSum
+}
+
 let metaSum = 0
-parseNodes(0, nodes)
-console.log(metaSum)
+console.log(parseNodes2(0, nodes))
