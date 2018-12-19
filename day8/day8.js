@@ -30,16 +30,20 @@ function parseNodes2 (headerIndex, nodes) {
   let nodeSum = 0
 
   let curNumChild = numChild
+  // get children values
   while (curNumChild > 0) {
     childNodeVals.push(parseNodes2(metaIndex, nodes))
     curNumChild = curNumChild - 1
   }
+  // if there are no children, add up the metadata
   if (numChild === 0) {
     let i = 0
     for (i = 0; i < numMeta; i++) {
       nodeSum += nodes[metaIndex + i]
     }
-  } else {
+  }
+  // Otherwise, add up child node values populated in the while loop 
+  else {
     let i = 0
     for (i = 0; i < numMeta; i++) {
       if (nodes[metaIndex + i]-1 < childNodeVals.length) {
@@ -47,6 +51,7 @@ function parseNodes2 (headerIndex, nodes) {
       }
     }
   }
+  // remove that node from the master list
   nodes.splice(headerIndex, numMeta + 2)
   return nodeSum
 }
